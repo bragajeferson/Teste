@@ -1,0 +1,4 @@
+hadoop fs -mkdir /user/mercafacil
+hadoop fs -put /tmp/vendas.txt /user/mercafacil
+hadoop fs -put /tmp/vendas_itens.txt /user/mercafacil
+hadoop fs -ls /user
