@@ -6,6 +6,7 @@ case class Vendas(id_loja: Integer, id_venda: Integer, numero_caixa: Integer, da
 
 val vendas = bankText.flatMap(_.split(";"))
 
+-- Fazendo o mapping
 val bank = bankText.map(s => s.split(";")).map(
     s => Vendas(s(0).toInt, 
             s(1).toInt,
@@ -20,11 +21,14 @@ val bank = bankText.map(s => s.split(";")).map(
         )
 )
 
+--Guardar como tabela temporaria
 vendas.toDF().registerTempTable("vendas")
 
+--Verificar se a tabela temporaria criada a partir do RDD foi carregada
 %sql
 select * from vendas
 
+--Total de vendas cliente
 %sql
 select id_cliente_1,
         round(sum(valor_total_sem_desc),2) as valor_total_sem_desc, 
@@ -33,6 +37,7 @@ from vendas
 GROUP BY id_cliente_1
 ORDER BY id_cliente_1
 
+--Total de vendas por dia
 %sql
 select 
 DAY(CAST(UNIX_TIMESTAMP(data_venda, 'dd/MM/yyyy') AS TIMESTAMP)) as dia,
