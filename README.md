@@ -12,7 +12,7 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 ### Carregamento dos arquivos CSV para o HDFS ###
 **1.	Usando o Ambari para carregar**
 
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Ambari-HDFS.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Ambari-HDFS.png)
 
 **2.	Via linha de comando**
 
@@ -28,20 +28,20 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 
 **1.	Criado os SQLContext para carregar os arquivos para o Spark**
 
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Zepplelin-SQLContext1.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Zepplelin-SQLContext1.png)
 
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Zepplelin-SQLContext2.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Zepplelin-SQLContext2.png)
 
 
 **2.	Construído a estrutura dos DataFrames e armazenado em tabelas temporárias para futura consulta**
 
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Zeppelin-DataFrame.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Zeppelin-DataFrame.png)
 
 **3.	Criado as consultas em SQL para validar os resultados**
 
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Zeppelin-Query1.png)
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Zeppelin-Query2.png)
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Zeppelin-Query3.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Zeppelin-Query1.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Zeppelin-Query2.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Zeppelin-Query3.png)
 
 ### Instalado o MongoDB ###
 **1.	Instalação do MongoDB**
@@ -60,7 +60,7 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 
 **2.	Instancia do mongod escutando na porta 27017**
 
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Instancia-MongoDB.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Instancia-MongoDB.png)
 
 ### Scala ###
 
@@ -70,8 +70,8 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
     
 **2.	Executando código Scala para verificar o conteúdo do DataFrame antes de gravar no MongoDB**
 
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Scala-DataFrame.png)
-![WAVFRM_SAMPLE](https://1drv.ms/f/s!Al0e9hv_E0cThR0iUGwtdAusyx8H/Zeppelin-DataFrame2.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Scala-DataFrame.png)
+![WAVFRM_SAMPLE](https://github.com/bragajeferson/Teste/blob/master/Zeppelin-DataFrame2.png)
 
 **3.	Gravação dos dados no MongoDB**
 
