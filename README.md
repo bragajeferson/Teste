@@ -16,6 +16,7 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 
 **2.	Via linha de comando**
 
+```sh
     hadoop fs -mkdir /user/mercafacil
   
     hadoop fs -put /tmp/vendas.txt /user/mercafacil
@@ -23,6 +24,7 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
     hadoop fs -put /tmp/vendas_itens.txt /user/mercafacil
   
     hadoop fs -ls /user
+```
 
 ### Leitura dos arquivos CSV do HDFS para o Spark usando Zeppelin ###
 
@@ -46,6 +48,7 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 ### Instalado o MongoDB ###
 **1.	Instalação do MongoDB**
 
+```sh
     vi /etc/yum.repos.d/mongodb-org-3.4.repo
     
     [mongodb-org-3.4]
@@ -57,6 +60,7 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
     mkdir /data/db
     
     service mongod start
+```
 
 **2.	Instancia do mongod escutando na porta 27017**
 
@@ -66,7 +70,9 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 
 **1.	Habilitar o Spark acessar o MongoDB usando o Scala**
 
+```sh
     ./bin/spark-shell –conf "spark.mongodb.output.uri=mongodb://127.0.0.1/results.collection" --packages org.mongodb.spark:mongo-spark-connector_2.10:1.1.0
+```
     
 **2.	Executando código Scala para verificar o conteúdo do DataFrame antes de gravar no MongoDB**
 
@@ -75,14 +81,17 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 
 **3.	Gravação dos dados no MongoDB**
 
+```scala
     vendas_por_cliente.saveToMongoDB(WriteConfig(Map("uri" -> "mongodb://127.0.0.1/mercafacil.vendasporcliente")))
     vendas_por_dia.saveToMongoDB(WriteConfig(Map("uri" -> "mongodb://127.0.0.1/mercafacil.vendaspordia")))
     vendas_por_produto.saveToMongoDB(WriteConfig(Map("uri" -> "mongodb://127.0.0.1/mercafacil.vendasporproduto")))
+```
 
 ### Scripts Scala ###
 
 **1.	Tabela Vendas**
 
+```scala
     import sqlContext.implicits._
     import com.mongodb.spark.config._
     import com.mongodb.spark._
@@ -122,9 +131,11 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
 
     vendas_por_cliente.saveToMongoDB(WriteConfig(Map("uri" -> "mongodb://127.0.0.1/mercafacil.vendasporcliente")))
     vendas_por_dia.saveToMongoDB(WriteConfig(Map("uri" -> "mongodb://127.0.0.1/mercafacil.vendaspordia")))
+```
 
 **2.	Tabela vendas_itens**
 
+```scala
     import sqlContext.implicits._
     import com.mongodb.spark.config._
     import com.mongodb.spark._
@@ -158,3 +169,4 @@ Carregar os dados de vendas para dentro do HDFS e através do Spark gerar sumari
     val vendas_por_produto = sqlContext.sql("select Vendas_itens.id_produto, translate(round(sum(Vendas_itens.valor_total_sem_desc), 3), '.', ',') as valor_total_sem_desc, translate(round(sum(Vendas_itens.valor_total_com_desc), 3), '.', ',') as valor_total_com_desc from Vendas_itens group by Vendas_itens.id_produto order by 1")
 
     vendas_por_produto.saveToMongoDB(WriteConfig(Map("uri" -> "mongodb://127.0.0.1/mercafacil.vendasporproduto")))
+```
